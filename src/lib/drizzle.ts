@@ -1,4 +1,4 @@
-import db from "db/index.js";
+import db from "@/db/index.js";
 import fp from "fastify-plugin";
 
 export default fp(async (fastify) => {

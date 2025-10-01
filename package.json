@@ -19,12 +19,14 @@
     "drizzle-zod": "^0.8.3",
     "fastify": "^4.29.1",
     "fastify-zod": "^1.4.0",
+    "module-alias": "^2.2.3",
     "mysql2": "^3.15.1",
     "nodemon": "^3.1.10",
     "zod": "^3.25.76",
     "zod-to-json-schema": "^3.24.6"
   },
   "devDependencies": {
+    "@types/module-alias": "^2.0.4",
     "@types/node": "^24.5.2",
     "drizzle-kit": "^0.31.5",
     "ts-node": "^10.9.2",
@@ -32,5 +34,8 @@
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.2"
+  },
+  "_moduleAliases": {
+    "@": "./dist"
   }
 }

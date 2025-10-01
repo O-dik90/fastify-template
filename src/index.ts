@@ -1,8 +1,8 @@
 import 'module-alias/register.js';
 
 import fastify from "fastify";
-import taskRoutes from "./modules/task-todo/task-route.js";
-import { env } from "./config/env.js";
+import taskRoutes from "@/modules/task-todo/task-route.js";
+import { env } from "@/config/env.js";
 
 const server = fastify({ logger: true });
 

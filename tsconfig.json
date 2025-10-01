@@ -1,40 +1,42 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    "baseUrl": ".",
+    /* ---- File Layout ---- */
+    "rootDir": "./src",
     "outDir": "./dist",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "moduleResolution": "nodenext",
-    // For nodejs:
-    // "lib": ["esnext"],
+    /* ---- Module / Target (for Node.js ESM) ---- */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
     "types": ["node"],
-    // and npm install -D @types/node
 
-    // Other Outputs
+    /* ---- Interop ---- */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* ---- Outputs ---- */
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
 
-    // Stricter Typechecking Options
+    /* ---- Strictness ---- */
+    "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": false,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
     "skipLibCheck": true,
+    "allowImportingTsExtensions":true,
+    "emitDeclarationOnly": true,
+
+    /* ---- ESM Import Fix ---- */
+    "verbatimModuleSyntax": false, // biar TS auto tambahin ".js" di hasil compile
+
+    /* ---- Optional (keep clean) ---- */
+    "isolatedModules": true,
+    "moduleDetection": "force"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]

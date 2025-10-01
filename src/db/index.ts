@@ -1,6 +1,8 @@
 import { env } from "@/config/env.js";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
+
+// ts-ignoret-disable-next-line import/no-unresolved
 import * as schema from "./schema/index.js";
 
 // create a connection pool

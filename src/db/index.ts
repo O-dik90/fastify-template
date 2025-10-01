@@ -1,6 +1,7 @@
-import { env } from "@/env.js"; // assuming you have path alias set in tsconfig
+import { env } from "config/env.js";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
+import * as schema from "./schema/index.js";
 
 // create a connection pool
 const poolConnection = mysql.createPool({
@@ -12,8 +13,9 @@ const poolConnection = mysql.createPool({
 });
 
 const db = drizzle(poolConnection, { 
+  schema,
   logger: true,
-  casing: "snake_case",
+  mode: "default"
 });
 
 export default db;

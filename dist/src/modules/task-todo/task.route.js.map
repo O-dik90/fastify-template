@@ -1,1 +1,0 @@
-{"version":3,"file":"task.route.js","sourceRoot":"","sources":["../../../../src/modules/task-todo/task.route.ts"],"names":[],"mappings":"AAEA,KAAK,UAAU,UAAU,CAAC,GAAoB;IAC5C,GAAG,CAAC,GAAG,CAAC,QAAQ,EAAE,KAAK,EAAE,OAAO,EAAE,KAAK,EAAE,EAAE;QACzC,OAAO,KAAK,CAAC,IAAI,CAAC,EAAE,KAAK,EAAE,YAAY,EAAE,CAAC,CAAC;IAC7C,CAAC,CAAC,CAAC;AACL,CAAC;AAED,eAAe,UAAU,CAAC"}

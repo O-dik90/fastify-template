@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1759271719840,
+      "tag": "0000_tense_ken_ellis",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,55 +1,12 @@
 import 'module-alias/register.js';
 
-import fastify from "fastify";
 import { env } from "@/config/env.js";
-import { jsonSchemaTransform, jsonSchemaTransformObject, serializerCompiler, validatorCompiler, ZodTypeProvider } from 'fastify-type-provider-zod';
-import fastifySwagger from '@fastify/swagger';
-import fastifySwaggerUI from '@fastify/swagger-ui';
-import z from 'zod/v4';
+import { createApp } from './lib/create-app.ts';
+import { tasksRoutes } from './modules/task-todo/task.route.ts';
 
-const USER_SCHEMA = z.object({
-  id: z.number().int().positive(),
-  name: z.string().describe('The name of the user'),
-});
+const server = createApp();
 
-z.globalRegistry.add(USER_SCHEMA, { id: 'User' });
-
-const server = fastify({ logger: true });
-server.setValidatorCompiler(validatorCompiler);
-server.setSerializerCompiler(serializerCompiler);
-
-server.register(fastifySwagger, {
-  openapi: {
-    info: {
-      title: 'SampleApi',
-      description: 'Sample backend service',
-      version: '1.0.0',
-    },
-    servers: [],
-  },
-  transform: jsonSchemaTransform,
-  transformObject: jsonSchemaTransformObject,
-});
-
-server.register(fastifySwaggerUI, {
-  routePrefix: '/docs',
-});
-
-server.after(() => {
-  server.withTypeProvider<ZodTypeProvider>().route({
-    method: 'GET',
-    url: '/users',
-    schema: {
-      response: {
-        200: USER_SCHEMA.array(),
-      },
-    },
-    handler: (req, res) => {
-      res.send([]);
-    },
-  });
-});
-
+server.register(tasksRoutes, { prefix: '/api/tasks' });
 
 const main = async () => {
   try {

@@ -12,6 +12,7 @@ const poolConnection = mysql.createPool({
   password: env.DATABASE_PASSWORD,
   port: Number(env.DATABASE_PORT),
   database: env.DATABASE_NAME,
+  dateStrings: false,
 });
 
 const db = drizzle(poolConnection, { 

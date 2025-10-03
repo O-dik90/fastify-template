@@ -4,6 +4,6 @@ CREATE TABLE `tasks` (
 	`description` text NOT NULL,
 	`is_completed` boolean NOT NULL DEFAULT false,
 	`created_at` timestamp NOT NULL DEFAULT (now()),
-	`updated_at` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	`updated_at` timestamp DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
 	CONSTRAINT `tasks_id` PRIMARY KEY(`id`)
 );

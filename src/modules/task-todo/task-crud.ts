@@ -3,8 +3,8 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import { log } from "console";
 import { eq } from "drizzle-orm/sql";
 import { StatusCodes } from "http-status-codes";
-import { create_task, task_id } from "./task.schema.ts";
-import { tasks } from "@/db/schema/tasks.ts";
+import { create_task, task_id } from "./task.schema.js";
+import { tasks } from "@/db/schema/tasks.js";
 
 export const getTasks = async (req: FastifyRequest, res: FastifyReply) => {
   try {

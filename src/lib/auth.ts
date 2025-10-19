@@ -1,4 +1,4 @@
-import db from "@/db/index.ts";
+import db from "@/db/index.js";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { bearer, openAPI } from "better-auth/plugins";

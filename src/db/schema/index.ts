@@ -1,2 +1,2 @@
-export * from "./tasks.ts";
-export * from "./auth-schema.ts";
+export * from "./tasks.js";
+export * from "./auth-schema.js";

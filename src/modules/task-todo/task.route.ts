@@ -1,10 +1,10 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
-import { CreateTaskSchema, MessageTaskSchema, taskID, TaskSchema } from "./task.schema.ts";
-import { notAuthorizedSchema } from "@/lib/constants.ts";
+import { CreateTaskSchema, MessageTaskSchema, taskID, TaskSchema } from "./task.schema.js";
+import { notAuthorizedSchema } from "@/lib/constants.js";
 import {StatusCodes} from "http-status-codes"
-import { createTask, deleteTask, getTaskById, getTasks, updateTask } from "./task-crud.ts";
+import { createTask, deleteTask, getTaskById, getTasks, updateTask } from "./task-crud.js";
 
 async function tasksRoutes(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().route({

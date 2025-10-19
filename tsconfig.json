@@ -1,45 +1,33 @@
 {
   "compilerOptions": {
-    /* ---- File Layout ---- */
     "rootDir": "./src",
     "outDir": "./dist",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
 
-    /* ---- Module / Target (for Node.js ESM) ---- */
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ESNext",
     "types": ["node"],
 
-    /* ---- Interop ---- */
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
 
-    /* ---- Outputs ---- */
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
 
-    /* ---- Strictness ---- */
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "skipLibCheck": true,
-    "allowImportingTsExtensions":true,
-    "emitDeclarationOnly": true,
 
-    /* ---- ESM Import Fix ---- */
-    "verbatimModuleSyntax": false, // biar TS auto tambahin ".js" di hasil compile
-
-    /* ---- Optional (keep clean) ---- */
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "typeRoots": ["./node_modules/@types", "./src/types"],
-    "ignoreDeprecations": "6.0"
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/db/schema/auth-schema.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }

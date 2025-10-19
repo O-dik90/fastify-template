@@ -1,10 +1,10 @@
 import 'module-alias/register.js';
 
 import { env } from "@/config/env.js";
-import { createApp } from '@/lib/create-app.ts';
-import { tasksRoutes } from '@/modules/task-todo/task.route.ts';
-import { authMiddleware } from '@/middleware/auth-middleware.ts';
-import { auth } from './lib/auth.ts';
+import { createApp } from '@/lib/create-app.js';
+import { tasksRoutes } from '@/modules/task-todo/task.route.js';
+import { authMiddleware } from '@/middleware/auth-middleware.js';
+import { auth } from './lib/auth.js';
 
 const server = createApp();
 
@@ -51,25 +51,6 @@ server.route({
     }
   },
 });
-
-server.addHook("onSend", async (request, reply, payload) => {
-  if (typeof payload === "string") {
-    try {
-      const data = JSON.parse(payload);
-      const transformed = JSON.stringify(data, (_, value) => {
-        if (value instanceof Date) {
-          return value.toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
-        }
-        return value;
-      });
-      return transformed;
-    } catch {
-      return payload;
-    }
-  }
-  return payload;
-});
-
 
 const main = async () => {
   try {

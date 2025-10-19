@@ -1,6 +1,6 @@
 import z from "zod";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { tasks } from "@/db/schema/tasks.ts";
+import { tasks } from "@/db/schema/tasks.js";
 
 
 export const MessageTaskSchema = z.object({

@@ -1,6 +1,6 @@
 import fp from "fastify-plugin";
 import { FastifyPluginAsync } from "fastify";
-import { auth } from "@/lib/auth.ts";
+import { auth } from "@/lib/auth.js";
 import { StatusCodes } from "http-status-codes";
 
 const authPlugin: FastifyPluginAsync = async (server) => {

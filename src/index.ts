@@ -10,7 +10,7 @@ const server = createApp();
 
 server.get("/", async () => ({ status: "Welcome Fastify!" }));
 server.register(async (protectedApp) => {
-  //await protectedApp.register(authMiddleware);
+  await protectedApp.register(authMiddleware);
 
   protectedApp.register(tasksRoutes, { prefix: "/tasks" });
 }, { prefix: "/api/v1" });
@@ -50,6 +50,24 @@ server.route({
       reply.status(500).send({ error: "Auth internal error" });
     }
   },
+});
+
+server.addHook("onSend", async (request, reply, payload) => {
+  if (typeof payload === "string") {
+    try {
+      const data = JSON.parse(payload);
+      const transformed = JSON.stringify(data, (_, value) => {
+        if (value instanceof Date) {
+          return value.toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
+        }
+        return value;
+      });
+      return transformed;
+    } catch {
+      return payload;
+    }
+  }
+  return payload;
 });
 
 

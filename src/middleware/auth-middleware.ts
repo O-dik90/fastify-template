@@ -1,6 +1,7 @@
 import fp from "fastify-plugin";
 import { FastifyPluginAsync } from "fastify";
 import { auth } from "@/lib/auth.ts";
+import { StatusCodes } from "http-status-codes";
 
 const authPlugin: FastifyPluginAsync = async (server) => {
   server.addHook("preHandler", async (request, reply) => {
@@ -9,10 +10,8 @@ const authPlugin: FastifyPluginAsync = async (server) => {
         headers: request.headers as Record<string, string>,
       });
 
-      request.log.debug({ session }, "Auth session");
-
       if (!session?.user) {
-        return reply.status(401).send({
+        return reply.status(StatusCodes.UNAUTHORIZED).send({
           error: "Unauthorized",
           message: "Session expired or invalid.",
         });
@@ -20,8 +19,7 @@ const authPlugin: FastifyPluginAsync = async (server) => {
 
       (request as any).user = session.user;
     } catch (err) {
-      request.log.error({ err }, "Auth middleware error");
-      return reply.status(401).send({
+      return reply.status(StatusCodes.UNAUTHORIZED).send({
         error: "Unauthorized",
         message: "Authentication failed",
       });

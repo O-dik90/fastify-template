@@ -45,7 +45,7 @@ export function createApp(): FastifyInstance {
           },
         },
       },
-      security: [{ bearerAuth: [] }],
+      security: [{ bearerAuth: [] }], // -> apply global security
     },
     transform: jsonSchemaTransform,
     transformObject: jsonSchemaTransformObject

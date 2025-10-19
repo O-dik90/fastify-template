@@ -27,10 +27,10 @@ async function tasksRoutes(app: FastifyInstance) {
       },
     },
     handler: async (request, reply) => {
-      const authHeader = request.headers.authorization;
-      if (!authHeader?.startsWith("Bearer ")) {
-        return reply.status(401).send({ error: "Unauthorized" });
-      }
+      // const authHeader = request.headers.authorization;
+      // if (!authHeader?.startsWith("Bearer ")) {
+      //   return reply.status(401).send({ error: "Unauthorized" });
+      // }
       const tasks = await db.query.tasks.findMany();
       console.log(tasks);
 

@@ -3,7 +3,7 @@ name: 🚀 Deploy Fastify to cPanel
 on:
   push:
     branches:
-      - master  # or your deployment branch
+      - master
 
 jobs:
   deploy:

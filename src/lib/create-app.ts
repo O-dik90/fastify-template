@@ -26,8 +26,6 @@ export function createApp(): FastifyInstance {
   app.setValidatorCompiler(validatorCompiler);
   app.setSerializerCompiler(serializerCompiler);
 
-
-
   app.register(fastifySwagger, {
     openapi: {
       info: {

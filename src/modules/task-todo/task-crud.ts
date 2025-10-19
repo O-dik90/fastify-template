@@ -10,3 +10,15 @@ export const getTasks = async () => {
 
   return { tasks: result };
 };
+
+export const getTaskById = async (id: number) => {
+  const task = await db.query.tasks.findFirst({
+    where: (tasks, { eq }) => eq(tasks.id, id),
+  });
+
+  if (!task) {
+    return null;
+  }
+
+  return task;
+};

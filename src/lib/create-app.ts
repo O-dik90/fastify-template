@@ -1,15 +1,14 @@
 import Fastify, { FastifyInstance } from "fastify";
-import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
+import { jsonSchemaTransform, jsonSchemaTransformObject, serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifyCors from "@fastify/cors";
-import { env } from "@/config/env.ts";
 
 export function createApp(): FastifyInstance {
   const app = Fastify({
     disableRequestLogging: true,
     logger: true,
-    exposeHeadRoutes: false,
+    exposeHeadRoutes: true,
   });
 
   app.register(fastifyCors, {
@@ -26,6 +25,8 @@ export function createApp(): FastifyInstance {
 
   app.setValidatorCompiler(validatorCompiler);
   app.setSerializerCompiler(serializerCompiler);
+
+
 
   app.register(fastifySwagger, {
     openapi: {
@@ -46,6 +47,8 @@ export function createApp(): FastifyInstance {
       },
       security: [{ bearerAuth: [] }],
     },
+    transform: jsonSchemaTransform,
+    transformObject: jsonSchemaTransformObject
   });
 
   app.register(fastifySwaggerUi, {
